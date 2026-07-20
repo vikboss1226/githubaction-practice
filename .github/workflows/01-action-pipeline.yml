@@ -11,6 +11,13 @@ jobs:
         run: |
           echo "this is second step"
           echo "multi line statement"
+  my-failed-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: failed-job
+        run: |
+          echo "failed job"
+          exit 1
 
   my-second-job:
     runs-on: windows-latest
