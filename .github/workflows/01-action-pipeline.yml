@@ -38,6 +38,10 @@ jobs:
       - name: Actor
         run: echo "Triggered by = ${{ github.actor }}"
 
+      - name: Vars
+        run: |
+          echo "My Var = ${{vars.MY_VAR}}"
+
       - name: Build
         run: echo "Building Application..."
 
