@@ -12,5 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: '[debug] - the debug run'
+        if: ${{inputs.debug}}
         run: |
-          echo "${{inputs.debug}} is the value"
+          echo "this is debug run ${{inputs.debug}}"
