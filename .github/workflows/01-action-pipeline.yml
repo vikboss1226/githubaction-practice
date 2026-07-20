@@ -1,6 +1,9 @@
 name: 01-action-pipeline
 on:
   push:
+  pull_request:
+  workflow_dispatch:
+
 jobs:
   my-first-job:
     runs-on: ubuntu-latest
