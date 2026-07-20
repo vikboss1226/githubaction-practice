@@ -11,3 +11,11 @@ jobs:
         run: |
           echo "this is second step"
           echo "multi line statement"
+
+  my-second-job:
+    runs-on: windows-latest
+    steps:
+      - name: second job steps - step 1
+        shell: bash
+        run: |
+          echo "this is windows runner"
