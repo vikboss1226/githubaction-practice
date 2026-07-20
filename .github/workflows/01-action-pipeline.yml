@@ -7,3 +7,7 @@ jobs:
     steps:
       - name: first step
         run: echo "hello world...!"
+      - name: second step
+        run: |
+          echo "this is second step"
+          echo "multi line statement"
