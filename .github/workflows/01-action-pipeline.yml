@@ -8,17 +8,6 @@ on:
       - develop
       - feature/*
 
-    # Ignore these branches
-    branches-ignore:
-      - feature/old/*
-      - temp
-
-    # Run only if changes are in these folders/files
-    paths:
-      - src/**
-      - app/**
-      - .github/workflows/**
-
     # Ignore these files/folders
     paths-ignore:
       - docs/**
