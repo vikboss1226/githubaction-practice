@@ -1,31 +1,62 @@
-name: 01-action-pipeline
+name: Branch and Path Filters Demo
+
 on:
   push:
+    # Run only on these branches
+    branches:
+      - main
+      - develop
+      - feature/*
+
+    # Ignore these branches
+    branches-ignore:
+      - feature/old/*
+      - temp
+
+    # Run only if changes are in these folders/files
+    paths:
+      - src/**
+      - app/**
+      - .github/workflows/**
+
+    # Ignore these files/folders
+    paths-ignore:
+      - docs/**
+      - README.md
+
   pull_request:
-  workflow_dispatch:
+    branches:
+      - main
+      - develop
 
 jobs:
-  my-first-job:
+  demo:
     runs-on: ubuntu-latest
-    steps:
-      - name: first step
-        run: echo "hello world...!"
-      - name: second step
-        run: |
-          echo "this is second step"
-          echo "multi line statement"
-  my-failed-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: failed-job
-        run: |
-          echo "failed job"
-          exit 1
 
-  my-second-job:
-    runs-on: windows-latest
     steps:
-      - name: second job steps - step 1
-        shell: bash
-        run: |
-          echo "this is windows runner"
+      - name: Workflow Started
+        run: echo "GitHub Actions Workflow Started"
+
+      - name: Event
+        run: echo "Event = ${{ github.event_name }}"
+
+      - name: Branch
+        run: echo "Branch = ${{ github.ref_name }}"
+
+      - name: Repository
+        run: echo "Repository = ${{ github.repository }}"
+
+      - name: Actor
+        run: echo "Triggered by = ${{ github.actor }}"
+
+      - name: Build
+        run: echo "Building Application..."
+
+      - name: Test
+        run: echo "Running Tests..."
+
+      - name: Deploy
+        run: echo "Deploying Application..."
+
+      - name: Finished
+        run: echo "Workflow Completed Successfully!"
