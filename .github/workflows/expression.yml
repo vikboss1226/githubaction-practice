@@ -20,6 +20,6 @@ jobs:
     steps:
       - name: second-job
         shell: bash
-        if: ${{inputs.debug}}
+        if: ${{inputs.debug==false}}
         run: |
           echo "value of debug is : ${{inputs.debug}}"
