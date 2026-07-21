@@ -16,11 +16,14 @@ jobs:
     environment: dev
     env:
       MY_SECRET: ${{ secrets.MY_SECRET }}
+      MY_TEST: ${{ vars.MY_TEST }}
     steps:
       - name: step 1
         if: inputs.debug
         run: |
+          echo "variable: $MY_TEST"
           echo "secret is: $MY_SECRET"
+          echo "my test var is: $MY_TEST"
           echo "this is my job: $MY_JOB"
           echo "value of debug is : ${{inputs.debug}}"
   echo-2:
