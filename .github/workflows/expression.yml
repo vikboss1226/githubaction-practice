@@ -15,3 +15,11 @@ jobs:
         if: ${{inputs.debug}}
         run: |
           echo "value of debug is : ${{inputs.debug}}"
+  echo-2:
+    runs-on: windows-latest
+    steps:
+      - name: second-job
+        shell: bash
+        if: ${{inputs.debug}}
+        run: |
+          echo "value of debug is : ${{inputs.debug}}"
