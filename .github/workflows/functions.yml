@@ -1,0 +1,40 @@
+name: functions-demo
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: contains()
+        run: echo "does 'refs/heads/main' contain 'main'? -> ${{ contains(github.ref, 'main') }}"
+
+      - name: startsWith() and endsWith()
+        run: |
+          echo "starts with refs/heads? -> ${{ startsWith(github.ref, 'refs/heads/') }}"
+          echo "ends with .yml? -> ${{ endsWith('functions.yml', '.yml') }}"
+
+      - name: format()
+        run: echo "${{ format('Hello {0}, this is run #{1}', github.actor, github.run_number) }}"
+
+      - name: join()
+        run: echo "joined list -> ${{ join(github.event.commits.*.id, ', ') }}"
+
+      - name: toJSON()
+        run: echo '${{ toJSON(github) }}'
+
+      - name: fromJSON()
+        run: |
+          echo "parsed value -> ${{ fromJSON('{"name":"muraly","role":"Product Manager"}').role }}"
+
+      - name: hashFiles()
+        run: echo "hash of this workflow file -> ${{ hashFiles('.github/workflows/functions.yml') }}"
+
+      - name: This always runs
+        if: ${{ always() }}
+        run: echo "always() -> this step runs no matter what happened before"
+
+      - name: This only runs on success
+        if: ${{ success() }}
+        run: echo "success() -> all previous steps succeeded"
