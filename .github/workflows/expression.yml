@@ -6,6 +6,8 @@ on:
       debug:
         type: boolean
         default: false
+env:
+  MY_NAME: muraly
 
 jobs:
   echo:
@@ -20,6 +22,7 @@ jobs:
     steps:
       - name: second-job
         shell: bash
-        if: ${{inputs.debug==false}}
+        if: inputs.debug==false
         run: |
-          echo "value of debug is : ${{inputs.debug}}"
+          echo "this is $MY_NAME"
+          echo "value of debug is new: ${{inputs.debug}}"
