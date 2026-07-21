@@ -16,7 +16,8 @@ jobs:
           echo "ends with .yml? -> ${{ endsWith('functions.yml', '.yml') }}"
 
       - name: format()
-        run: echo "${{ format('Hello {0}, this is run #{1}', github.actor, github.run_number) }}"
+        run: |
+          echo "${{ format('Hello {0}, this is run #{1}', github.actor, github.run_number) }}"
 
       - name: join()
         run: echo "joined list -> ${{ join(github.event.commits.*.id, ', ') }}"
