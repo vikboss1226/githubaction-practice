@@ -1,17 +1,17 @@
-name: expression-yml
+name: expression-workflow
 on:
   push:
   workflow_dispatch:
     inputs:
       debug:
         type: boolean
-        default: true
+        default: false
 
 jobs:
-  start-up:
+  echo:
     runs-on: ubuntu-latest
     steps:
-      - name: '[debug] - the debug run'
+      - name: step 1
         if: ${{inputs.debug}}
         run: |
-          echo "this is debug run ${{inputs.debug}}"
+          echo "value of debug is : ${{inputs.debug}}"
